@@ -27,7 +27,7 @@ interface BoundedStack<T> {
 }
 
 class BoundedStackImpl<T> implements BoundedStack<T> {
-    private final int capacity = 32;
+    private int capacity = 32;
     private final List<T> stack;
     private int pushStatus;
     private int peekStatus;
@@ -35,7 +35,13 @@ class BoundedStackImpl<T> implements BoundedStack<T> {
 
     // post-condition: created new empty stack with capacity 32
     BoundedStackImpl() {
-        stack = new ArrayList<>(capacity);
+        this.stack = new ArrayList<>(capacity);
+    }
+
+    // post-condition: created new empty stack with defined capacity
+    BoundedStackImpl(int capacity) {
+        this.stack = new ArrayList<>(capacity);
+        this.capacity = capacity;
     }
 
     // pre-condition: current stack size < capacity
