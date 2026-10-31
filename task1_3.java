@@ -7,10 +7,12 @@ import org.junit.jupiter.api.Test;
 class BoundedStackTest {
 
     private final BoundedStack<Integer> stack = new BoundedStackImpl<>();
+    private final BoundedStack<Integer> biggerStack = new BoundedStackImpl<>(64);
 
     @BeforeEach
     void beforeEach() {
         stack.clear();
+        biggerStack.clear();
     }
 
     @Test
@@ -28,10 +30,23 @@ class BoundedStackTest {
             Assertions.assertEquals(BoundedStack.PUSH_OK, stack.getPushStatus());
         }
 
-        stack.push(33);
+        stack.push(32);
 
         Assertions.assertEquals(32, stack.size());
         Assertions.assertEquals(BoundedStack.PUSH_ERR, stack.getPushStatus());
+    }
+
+    @Test
+    void push_full_err_2() {
+        for (int i = 0; i < 64; i++) {
+            biggerStack.push(i);
+            Assertions.assertEquals(BoundedStack.PUSH_OK, biggerStack.getPushStatus());
+        }
+
+        biggerStack.push(64);
+
+        Assertions.assertEquals(64, biggerStack.size());
+        Assertions.assertEquals(BoundedStack.PUSH_ERR, biggerStack.getPushStatus());
     }
 
     @Test
