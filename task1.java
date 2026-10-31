@@ -33,13 +33,13 @@ class BoundedStackImpl<T> implements BoundedStack<T> {
     private int peekStatus;
     private int popStatus;
 
-    // постусловие: создан новый пустой стэк объемом 32
+    // post-condition: created new empty stack with capacity 32
     BoundedStackImpl() {
         stack = new ArrayList<>(capacity);
     }
 
-    // предусловие: текущий размер стека < объема
-    // постусловие: в стек добавлено новое значение
+    // pre-condition: current stack size < capacity
+    // post-condition: new value added to stack
     @Override
     public void push(T value) {
         if (stack.size() < capacity) {
@@ -50,8 +50,8 @@ class BoundedStackImpl<T> implements BoundedStack<T> {
         }
     }
 
-    // предусловие: стек не пустой
-    // постусловие: из стека удалён верхний элемент
+    // pre-condition: stack is not empty
+    // post-condition: removed upper value from stack
     @Override
     public void pop() {
         if (stack.isEmpty()) {
@@ -62,7 +62,7 @@ class BoundedStackImpl<T> implements BoundedStack<T> {
         }
     }
 
-    // постусловие: из стека удалятся все значения
+    // post-condition: removed all values from stack
     @Override
     public void clear() {
         stack.clear();
@@ -72,7 +72,7 @@ class BoundedStackImpl<T> implements BoundedStack<T> {
         pushStatus = PUSH_NIL;
     }
 
-    // предусловие: стек не пустой
+    // pre-condition: stack is not empty
     @Override
     public T peek() {
         if (stack.isEmpty()) {
