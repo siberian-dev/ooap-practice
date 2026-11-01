@@ -1,0 +1,4 @@
+Reflection
+1. Missed max_size()
+2. Missed command/query segregation
+3. Added extra status for push - nil
