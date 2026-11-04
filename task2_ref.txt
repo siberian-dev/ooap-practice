@@ -1,0 +1,24 @@
+Reflection
+1. Correct:
+    - Constructor
+    - head()
+    - tail()
+    - right()
+    - putRight(value)
+    - putLeft(value)
+    - addToEmpty(value)
+    - remove()
+    - clear()
+    - replace(value)
+    - get()
+    - isHead()
+    - isTail()
+    - isValue()
+    - size()
+2. Particular correct
+    - addTail(value)
+        - extra pre-condition
+    - removeAll(value)
+        - extra pre-condition
+    - find(value)
+        - extra pre-condition
