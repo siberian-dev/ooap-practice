@@ -4,15 +4,10 @@ import java.lang.reflect.Array;
 
 interface Queue<T> {
     /* Commands */
-    // pre-condition: queue is not full
-    // post-condition: new element added to queue tail
     void enqueue(T value);
-    // pre-condition: queue is not empty
-    // post-condition: element removed from queue head
     T dequeue();
 
     /* Queries */
-    // pre-condition: queue is not empty
     T head();
     boolean isEmpty();
     boolean isFull();
@@ -42,6 +37,7 @@ class QueueImpl<T> implements Queue<T> {
     private int headStatus = Status.NOT_EXECUTED.ordinal();
     private int dequeueStatus = Status.NOT_EXECUTED.ordinal();
 
+    // post-condition: queue with defined capacity created
     QueueImpl(Class clz, int capacity) {
         this.capacity = capacity;
         this.size = 0;
@@ -50,6 +46,8 @@ class QueueImpl<T> implements Queue<T> {
         this.entry = (T[]) Array.newInstance(clz, capacity);
     }
 
+    // pre-condition: queue is not full
+    // post-condition: new element added to queue tail
     @Override
     public void enqueue(T value) {
         if (isFull()) {
@@ -62,6 +60,8 @@ class QueueImpl<T> implements Queue<T> {
         enqueueStatus = Status.SUCCESS.ordinal();
     }
 
+    // pre-condition: queue is not empty
+    // post-condition: element removed from queue head
     @Override
     public T dequeue() {
         if (isEmpty()) {
@@ -75,6 +75,7 @@ class QueueImpl<T> implements Queue<T> {
         return el;
     }
 
+    // pre-condition: queue is not empty
     @Override
     public T head() {
         if (isEmpty()) {
