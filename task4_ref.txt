@@ -1,0 +1,17 @@
+1. Correct
+    - getItem(index) == get(i)
+    - size()
+2. Particular correct
+    - Constructor
+        - missed post-condition
+    - insert(itm, index)
+        - not split to put_right(i, value), put_left(i, value)
+            - but pre-conditions is OK
+    - append(value)
+        - too much detailed post-condition for capacity,
+            but not enough for new element position
+    - remove(index)
+        - too much detailed post-condition for shifts,
+3. Invalid
+    - put(i, value)
+        - not implemented
