@@ -1,0 +1,1 @@
+All almost OK. But i have bounded queue. So for enqueue added 1 pre-condition.
