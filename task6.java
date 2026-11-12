@@ -106,7 +106,6 @@ abstract class ParentQueue<T> {
 }
 
 abstract class Queue<T> extends ParentQueue<T> {
-    // post-condition: queue with defined capacity created
     Queue(Class clz, int capacity) {
         super(clz, capacity);
     }
@@ -126,6 +125,7 @@ abstract class Deque<T> extends ParentQueue<T>{
 }
 
 class QueueImpl<T> extends Queue<T> {
+    // post-condition: queue with defined capacity created
     QueueImpl(Class clz, int capacity) {
         super(clz, capacity);
     }
