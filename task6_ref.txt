@@ -1,0 +1,1 @@
+I've used bounded queue and deque, so one more pre-conditions added. Another is OK.
