@@ -14,7 +14,6 @@ abstract class HashTable {
     protected final String[] slots;
     protected int step = 3;
     protected int capacity;
-    protected int size = 0;
 
     int putStatus = Status.NOT_EXECUTED.ordinal();
     int removeStatus = Status.NOT_EXECUTED.ordinal();
@@ -26,7 +25,7 @@ abstract class HashTable {
     }
 
     /* Command */
-    // pre-condition: free slot exist, index can be found
+    // pre-condition: free slot exist
     // post-condition: value placed in free slot
     abstract int put(String value);
     // pre-condition: defined slot index in range (0, capacity - 1)
@@ -59,7 +58,7 @@ class HashTableImpl extends HashTable {
 
     @Override
     int put(String value) {
-        var index = value.hashCode() % capacity;
+        var index = Math.abs(value.hashCode()) % capacity;
         var startIndex = index;
         while (slots[index] != null) {
             index = (index + step) % capacity;
@@ -69,6 +68,8 @@ class HashTableImpl extends HashTable {
                 return INVALID_INDEX;
             }
         }
+
+        slots[index] = value;
 
         putStatus = Status.SUCCESS.ordinal();
         return index;
@@ -92,9 +93,9 @@ class HashTableImpl extends HashTable {
 
     @Override
     int find(String value) {
-        var index = value.hashCode() % capacity;
+        var index = Math.abs(value.hashCode()) % capacity;
 
-        if (slots[index] != null) {
+        if (slots[index].equals(value)) {
             findStatus = Status.SUCCESS.ordinal();
             return index;
         } else {
