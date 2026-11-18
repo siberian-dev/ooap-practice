@@ -14,6 +14,7 @@ abstract class NativeDictionary<T> {
     protected final String[] slots;
     protected final T[] values;
     protected int step = 3;
+    protected int size = 0;
     protected int capacity;
 
     int putStatus = Status.NOT_EXECUTED.ordinal();
@@ -23,6 +24,7 @@ abstract class NativeDictionary<T> {
     // post-condition: created native dictionary with defined capacity
     public NativeDictionary(int capacity, Class clazz) {
         this.capacity = capacity;
+        this.size = 0;
         this.slots = new String[capacity];
         this.values = (T[]) Array.newInstance(clazz, capacity);
     }
@@ -41,6 +43,10 @@ abstract class NativeDictionary<T> {
 
     // pre-condition: value with key presented
     abstract T get(String key);
+
+    int size() {
+        return size;
+    }
 
     /* Statuses Getting */
     public int getPutStatus() {
@@ -77,6 +83,7 @@ class NativeDictionaryImpl<T> extends NativeDictionary<T> {
 
         slots[index] = key;
         values[index] = value;
+        size += 1;
 
         putStatus = Status.SUCCESS.ordinal();
     }
@@ -92,6 +99,7 @@ class NativeDictionaryImpl<T> extends NativeDictionary<T> {
 
         slots[index] = null;
         values[index] = null;
+        size -= 1;
 
         removeStatus = Status.SUCCESS.ordinal();
     }
