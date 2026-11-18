@@ -20,6 +20,7 @@ abstract class NativeDictionary<T> {
     int removeStatus = Status.NOT_EXECUTED.ordinal();
     int getStatus = Status.NOT_EXECUTED.ordinal();
 
+    // post-condition: created native dictionary with defined capacity
     public NativeDictionary(int capacity, Class clazz) {
         this.capacity = capacity;
         this.slots = new String[capacity];
