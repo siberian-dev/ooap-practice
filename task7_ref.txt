@@ -3,3 +3,5 @@ My faults:
 | should | get(T value)     -> | my | find(int index)
 | should | remove(T value)  -> | my | remove(int index)
 | should | size()           -> | my | not used
+
+Pre/Post Conditions for put is OK
