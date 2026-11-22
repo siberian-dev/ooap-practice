@@ -1,0 +1,2 @@
+I created native dictionary with capacity. I added 1 pre-condition for put(string key, T value) operation due to capacity restriction.
+Other operations are OK.
