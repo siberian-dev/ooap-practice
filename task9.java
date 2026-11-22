@@ -167,7 +167,7 @@ class PowerSetImpl<T> extends PowerSet<T> {
             unionStatus = Status.DIFFERENT_CAPACITIES.ordinal();
         }
 
-        PowerSet<T> union = new PowerSetImpl<>(this.size + set2.size(), clazz);
+        PowerSet<T> union = new PowerSetImpl<>(this.capacity + set2.capacity, clazz);
 
         PowerSet<T> biggerSet = set2.size > this.size ? set2 : this;
         PowerSet<T> smallerSet = biggerSet == this ? set2 : this;
