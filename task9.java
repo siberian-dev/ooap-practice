@@ -97,6 +97,8 @@ abstract class HashTable<T> {
 }
 
 abstract class PowerSet<T> extends HashTable<T> {
+
+    // post-condition: created empty set
     public PowerSet(int capacity, Class clazz) {
         super(capacity, clazz);
     }
