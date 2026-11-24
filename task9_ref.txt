@@ -1,0 +1,5 @@
+Missed function: isSubset(PowerSet<T> set)
+
+Used values function to avoid Iterable and Iterator.
+
+My (Pre/Post) conditions - extra. User doesn't need to think about capacity to use functions
